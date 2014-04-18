@@ -1,0 +1,58 @@
+{
+  "name": "ponte",
+  "version": "0.0.7",
+  "description": "The Internet of Things Bridge for REST developers",
+  "main": "lib/ponte.js",
+  "bin": {
+    "ponte": "./bin/ponte"
+  },
+  "scripts": {
+    "test": "mocha --recursive --bail --reporter spec test",
+    "ci": "mocha --recursive --bail --watch test",
+    "jshint-lib": "jshint lib/*.js",
+    "jshint-test": "jshint test/*.js",
+    "start": "./bin/ponte -v | bunyan"
+  },
+  "pre-commit": [
+    "jshint-lib",
+    "jshint-test",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcollina/ponte.git"
+  },
+  "bugs": {
+    "url": "http://github.com/mcollina/ponte/issues"
+  },
+  "author": "Matteo Collina <hello@matteocollina.com>",
+  "license": [{
+    "type": "Eclipse Distribution License 1.0 (EDL-1.0) (BSD 3-Clause)",
+    "url": "http://www.eclipse.org/org/documents/edl-v10.html"
+  },{
+    "type": "Eclipse Public License 1.0 (EPL-1.0)",
+    "url": "http://www.eclipse.org/org/documents/epl-v10.html"
+  }],
+  "devDependencies": {
+    "sinon-chai": "~2.4.0",
+    "tmp": "0.0.23",
+    "superagent": "~0.15.5",
+    "sinon": "~1.7.3",
+    "supertest": "~0.8.3",
+    "chai": "~1.8.1",
+    "mocha": "~1.17.0",
+    "pre-commit": "0.0.4",
+    "jshint": "~2.4.1"
+  },
+  "dependencies": {
+    "mosca": "~0.20.0",
+    "ascoltatori": "~0.14.0",
+    "commander": "~2.2.0",
+    "bunyan": "~0.22.3",
+    "mqtt": "~0.3.8",
+    "async": "~0.7.0",
+    "callback-stream": "~1.0.2",
+    "xtend": "~3.0.0",
+    "coap": "~0.6.0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "node": true,
+  "indent": 2,
+  "expr": true,
+  "globals": {
+    "it": false,
+    "afterEach": false,
+    "beforeEach": false,
+    "describe": false,
+    "expect": false,
+    "before": false,
+    "moscaSettings": false,
+    "globalLogger": false
+  }
+}
