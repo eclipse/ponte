@@ -1,6 +1,6 @@
 {
   "name": "ponte",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "The Internet of Things Bridge for REST developers",
   "main": "lib/ponte.js",
   "bin": {
@@ -20,10 +20,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mcollina/ponte.git"
+    "url": "https://github.com/eclipse/ponte.git"
   },
   "bugs": {
-    "url": "http://github.com/mcollina/ponte/issues"
+    "url": "http://github.com/eclipse/ponte/issues"
   },
   "author": "Matteo Collina <hello@matteocollina.com>",
   "license": [{
