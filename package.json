@@ -45,14 +45,14 @@
     "jshint": "~2.4.1"
   },
   "dependencies": {
-    "mosca": "~0.20.0",
-    "ascoltatori": "~0.14.0",
+    "mosca": "~0.21.0",
+    "ascoltatori": "~0.15.0",
     "commander": "~2.2.0",
     "bunyan": "~0.22.3",
     "mqtt": "~0.3.8",
     "async": "~0.7.0",
     "callback-stream": "~1.0.2",
     "xtend": "~3.0.0",
-    "coap": "~0.6.0"
+    "coap": "~0.6.1"
   }
 }

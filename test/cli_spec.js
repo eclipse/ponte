@@ -81,6 +81,16 @@ describe("ponte.cli", function() {
     });
   });
 
+  it("should start a ponte on a specific host", function(done) {
+    args.push("--host");
+    args.push("127.0.0.1");
+    startServer(done, function(server) {
+      expect(server.options.http.host).to.be.eql("127.0.0.1");
+      expect(server.options.mqtt.host).to.be.eql("127.0.0.1");
+      expect(server.options.coap.host).to.be.eql("127.0.0.1");
+    });
+  });
+
   it("should start a ponte on a specific HTTP port (long)", function(done) {
     args.push("--http-port");
     args.push("3042");
