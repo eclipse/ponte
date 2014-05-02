@@ -97,4 +97,10 @@ describe("Ponte as an HTTP API", function() {
       done();
     });
   });
+
+  it("should GET the index and return a 404", function(done) {
+    request(instance.http.server)
+      .get("")
+      .expect(404, done);
+  });
 });
