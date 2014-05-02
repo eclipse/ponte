@@ -1,6 +1,6 @@
 {
   "name": "ponte",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "The Internet of Things Bridge for REST developers",
   "main": "lib/ponte.js",
   "bin": {
@@ -9,8 +9,8 @@
   "scripts": {
     "test": "mocha --recursive --bail --reporter spec test",
     "ci": "mocha --recursive --bail --watch test",
-    "jshint-lib": "jshint lib/*.js",
-    "jshint-test": "jshint test/*.js",
+    "jshint-lib": "jshint lib",
+    "jshint-test": "jshint test",
     "start": "./bin/ponte -v | bunyan"
   },
   "pre-commit": [
@@ -26,13 +26,16 @@
     "url": "http://github.com/eclipse/ponte/issues"
   },
   "author": "Matteo Collina <hello@matteocollina.com>",
-  "license": [{
-    "type": "Eclipse Distribution License 1.0 (EDL-1.0) (BSD 3-Clause)",
-    "url": "http://www.eclipse.org/org/documents/edl-v10.html"
-  },{
-    "type": "Eclipse Public License 1.0 (EPL-1.0)",
-    "url": "http://www.eclipse.org/org/documents/epl-v10.html"
-  }],
+  "license": [
+    {
+      "type": "Eclipse Distribution License 1.0 (EDL-1.0) (BSD 3-Clause)",
+      "url": "http://www.eclipse.org/org/documents/edl-v10.html"
+    },
+    {
+      "type": "Eclipse Public License 1.0 (EPL-1.0)",
+      "url": "http://www.eclipse.org/org/documents/epl-v10.html"
+    }
+  ],
   "devDependencies": {
     "sinon-chai": "~2.4.0",
     "tmp": "0.0.23",
@@ -41,7 +44,7 @@
     "supertest": "~0.8.3",
     "chai": "~1.8.1",
     "mocha": "~1.17.0",
-    "pre-commit": "0.0.4",
+    "pre-commit": "0.0.7",
     "jshint": "~2.4.1"
   },
   "dependencies": {
