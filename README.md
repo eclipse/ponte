@@ -1,6 +1,8 @@
 Ponte
 =====
 
+![Ponte Logo](./artwork/logo-banner-white.png)
+
 __Ponte__ is a multi-transport Internet of Things / Machine to Machine broker.
 As the current state it supports [MQTT](http://mqtt.org/) and REST
 APIs over HTTP and CoAP.
@@ -12,6 +14,8 @@ If you plan to use Ponte in production
 [let us know](http://twitter.com/matteocollina), we'll be more than
 happy to help you getting started and solve any issue you'll find out.
 
+A test instance of ponte is available at ponte.eclipse.org, on HTTP,
+MQTT and CoAP standard ports.
 
 ## Installation
 
@@ -51,7 +55,7 @@ $ ./bin/ponte --help
 ## Usage Example
 
 Start ponte:
-```
+```bash
 $ ponte -v | bunyan
 ```
 
