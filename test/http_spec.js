@@ -103,4 +103,15 @@ describe("Ponte as an HTTP API", function() {
       .get("")
       .expect(404, done);
   });
+
+  it("should handle CORS headers", function(done) {
+    request(instance.http.server)
+      .options("/resources/hello")
+      .set('Origin', 'http://somehost.org')
+      .expect('Access-Control-Allow-Origin', 'http://somehost.org')
+      .expect('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS, XMODIFY')
+      .expect('Access-Control-Max-Age', '86400')
+      .expect('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept')
+      .expect(200, done);
+  });
 });
