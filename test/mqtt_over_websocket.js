@@ -16,6 +16,7 @@
 var request = require("supertest");
 var mqtt = require("mows");
 var ponte = require("../lib/ponte");
+var fs = require("fs");
 
 describe("Ponte as an MQTT-over-WebSocket server", function() {
 
@@ -83,5 +84,19 @@ describe("Ponte as an MQTT-over-WebSocket server", function() {
       expect(value).to.eql(new Buffer("world"));
       done();
     });
+  });
+
+  it("should serve the mqttws31.js file", function(done) {
+    var file = fs.readFileSync(__dirname + "/../public/mqttws31.js");
+    request(instance.http.server)
+      .get("/mqttws31.js")
+      .expect(200, file.toString(), done);
+  });
+
+  it("should serve the mqtt.js file", function(done) {
+    var file = fs.readFileSync(__dirname + "/../node_modules/mosca/public/mqtt.js");
+    request(instance.http.server)
+      .get("/mqtt.js")
+      .expect(200, file.toString(), done);
   });
 });
