@@ -1,13 +1,13 @@
 Ponte
 =====
 
-![Ponte Logo](./artwork/logo-banner-white.png)
+![Ponte Logo](https://raw.githubusercontent.com/eclipse/ponte/master/artwork/logo-banner-white.png)
 
 __Ponte__ is a multi-transport Internet of Things / Machine to Machine broker.
 As the current state it supports [MQTT](http://mqtt.org/) and REST
 APIs over HTTP and CoAP.
 
-![Ponte Architecture](./architecture.png)
+![Ponte Architecture](https://raw.githubusercontent.com/eclipse/ponte/master/architecture.png)
 
 __Ponte__ is under active development, but it should work :).
 If you plan to use Ponte in production
