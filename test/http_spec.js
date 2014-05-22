@@ -63,6 +63,18 @@ describe("Ponte as an HTTP API", function() {
       });
   });
 
+  it("should POST and GET a topic and its payload", function(done) {
+    request(instance.http.server)
+      .post("/resources/hello")
+      .set("content-type", "text/plain")
+      .send("hello world")
+      .expect(204, function() {
+        request(instance.http.server)
+          .get("/resources/hello")
+          .expect(200, "hello world", done);
+      });
+  });
+
   it("should publish a value to MQTT after PUT", function(done) {
     mqtt.createClient(settings.mqtt.port)
 
