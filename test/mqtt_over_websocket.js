@@ -86,17 +86,37 @@ describe("Ponte as an MQTT-over-WebSocket server", function() {
     });
   });
 
-  it("should serve the mqttws31.js file", function(done) {
-    var file = fs.readFileSync(__dirname + "/../public/mqttws31.js");
-    request(instance.http.server)
-      .get("/mqttws31.js")
-      .expect(200, file.toString(), done);
+  describe("with the serve libraries option", function() {
+    it("should serve the mqttws31.js file", function(done) {
+      var file = fs.readFileSync(__dirname + "/../public/mqttws31.js");
+      request(instance.http.server)
+        .get("/mqttws31.js")
+        .expect(200, file.toString(), done);
+    });
+
+    it("should serve the mqtt.js file", function(done) {
+      var file = fs.readFileSync(__dirname + "/../node_modules/mosca/public/mqtt.js");
+      request(instance.http.server)
+        .get("/mqtt.js")
+        .expect(200, file.toString(), done);
+    });
   });
 
-  it("should serve the mqtt.js file", function(done) {
-    var file = fs.readFileSync(__dirname + "/../node_modules/mosca/public/mqtt.js");
-    request(instance.http.server)
-      .get("/mqtt.js")
-      .expect(200, file.toString(), done);
+  describe("without the serve libraries option", function() {
+    beforeEach(function() {
+      settings.http.serveLibraries = false;
+    });
+
+    it("should serve the mqttws31.js file", function(done) {
+      request(instance.http.server)
+        .get("/mqttws31.js")
+        .expect(404, done);
+    });
+
+    it("should serve the mqtt.js file", function(done) {
+      request(instance.http.server)
+        .get("/mqtt.js")
+        .expect(404, done);
+    });
   });
 });
