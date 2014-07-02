@@ -221,6 +221,32 @@ module.exports = {
 
 Launch it with `$ ponte -c config.js`.
 
+### Configuration with MQTT and Redis
+
+__Ponte__ can be run on top of MQTT broker while using Redis (or similarly MongoDB) with the following configuration:
+
+```js
+module.exports = {
+  persistence: {
+    // same as http://mcollina.github.io/mosca/docs/lib/persistence/redis.js.html
+    type: "redis",
+    host: "localhost"
+  },
+  broker: {
+    // same as https://github.com/mcollina/ascoltatori#mqtt
+    type: "mqtt",
+    port: "2883",
+    host: "localhost"
+  },
+  logger: {
+    level: 20,
+    name: "Config Test Logger"
+  }
+};
+```
+
+Launch it with `$ ponte -c config.js`.
+
 ## Pub/Sub Brokers
 
 __Ponte__ is based on
