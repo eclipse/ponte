@@ -45,9 +45,12 @@ $ ./bin/ponte --help
     -m, --mqtt-port <n>  the mqtt port to listen to
     -p, --http-port <n>  the http port to listen to
     -a, --coap-port <n>  the coap port to listen to
+    --host <host>        the host to listen to
+    --coap-host <host>   the host to listen to for coap requests
+    --mqtt-host <host>   the host to listen to for mqtt requests
+    --http-host <host>   the host to listen to for http requests
     -d, --db <path>      the path were to store the database
-    -c, --config <c>     the config file to use (override every other
-     option)
+    -c, --config <c>     the config file to use (override every other option)
     -v, --verbose        set the bunyan log to INFO
     --very-verbose       set the bunyan log to DEBUG
 ```

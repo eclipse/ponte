@@ -81,16 +81,6 @@ describe("ponte.cli", function() {
     });
   });
 
-  it("should start a ponte on a specific host", function(done) {
-    args.push("--host");
-    args.push("127.0.0.1");
-    startServer(done, function(server) {
-      expect(server.options.http.host).to.be.eql("127.0.0.1");
-      expect(server.options.mqtt.host).to.be.eql("127.0.0.1");
-      expect(server.options.coap.host).to.be.eql("127.0.0.1");
-    });
-  });
-
   it("should start a ponte on a specific HTTP port (long)", function(done) {
     args.push("--http-port");
     args.push("3042");
@@ -176,6 +166,40 @@ describe("ponte.cli", function() {
         expect(server.persistence).to.be.instanceOf(mosca.persistence.LevelUp);
         expect(server.persistence.options.path).to.eql(path);
       });
+    });
+  });
+
+  it("should start a ponte on a specific host", function(done) {
+    args.push("--host");
+    args.push("127.0.0.1");
+    startServer(done, function(server) {
+      expect(server.options.http.host).to.be.eql("127.0.0.1");
+      expect(server.options.mqtt.host).to.be.eql("127.0.0.1");
+      expect(server.options.coap.host).to.be.eql("127.0.0.1");
+    });
+  });
+
+  it("should start a ponte on a specific host for CoAP", function(done) {
+    args.push("--coap-host");
+    args.push("::1");
+    startServer(done, function(server) {
+      expect(server.options.coap.host).to.be.eql("::1");
+    });
+  });
+
+  it("should start a ponte on a specific host for MQTT", function(done) {
+    args.push("--mqtt-host");
+    args.push("127.0.0.1");
+    startServer(done, function(server) {
+      expect(server.options.mqtt.host).to.be.eql("127.0.0.1");
+    });
+  });
+
+  it("should start a ponte on a specific host for HTTP", function(done) {
+    args.push("--http-host");
+    args.push("127.0.0.1");
+    startServer(done, function(server) {
+      expect(server.options.http.host).to.be.eql("127.0.0.1");
     });
   });
 });
