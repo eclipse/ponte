@@ -194,6 +194,33 @@ module.exports = {
 };
 ```
 
+Launch it with `$ ponte -c config.js`.
+
+### Configuration with Redis
+
+__Ponte__ can be run on top of Redis with the following configuration:
+
+```js
+module.exports = {
+  persistence: {
+    // same as http://mcollina.github.io/mosca/docs/lib/persistence/redis.js.html
+    type: "redis",
+    host: "localhost"
+  },
+  broker: {
+    // same as https://github.com/mcollina/ascoltatori#redis
+    type: "redis",
+    host: "localhost"
+  },
+  logger: {
+    level: 20,
+    name: "Config Test Logger"
+  }
+};
+```
+
+Launch it with `$ ponte -c config.js`.
+
 ## Pub/Sub Brokers
 
 __Ponte__ is based on
