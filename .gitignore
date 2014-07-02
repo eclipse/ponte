@@ -16,3 +16,4 @@ node_modules
 docs
 mosquitto.db
 *.pdf
+db/
