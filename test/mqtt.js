@@ -43,6 +43,18 @@ describe("Ponte as an MQTT server", function() {
       });
   });
 
+  it("should support wildcards", function(done) {
+    var client = mqtt.createClient(settings.mqtt.port);
+    client
+      .subscribe("#")
+      .publish("hello", "world")
+      .on("message", function(topic, payload) {
+        expect(topic).to.eql("hello");
+        expect(payload).to.eql("world");
+        done();
+      });
+  });
+
   it("should expose retained messages to HTTP", function(done) {
     var client = mqtt.createClient(settings.mqtt.port);
     client
