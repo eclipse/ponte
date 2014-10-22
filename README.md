@@ -245,6 +245,79 @@ module.exports = {
 };
 ```
 
+### Configuration with authentication and authorization callbacks
+
+```js
+module.exports = {
+  coap: {
+    /**
+     * @param {Object} req The request object
+     * @param {Function} callback The callback function. Has the following structure: callback(error, authenticated, [subject])
+     */
+    authenticate: function(req, callback) {
+      // ...
+    },
+    /**
+     * @param {Object} subject The subject returned by the authenticate function
+     * @param {string} topic The topic
+     * @param {Function} callback The callback function. Has the following structure: callback(error, authorized)
+     */
+    authorizeGet: function(subject, topic, callback) {
+      // ...
+    },
+    /**
+     * @param {Object} subject The subject returned by the authenticate function
+     * @param {string} topic The topic
+     * @param {Buffer} payload The payload
+     * @param {Function} callback The callback function. Has the following structure: callback(error, authorized)
+     */
+    authorizePut: function(subject, topic, payload, callback) {
+      // ...
+    }
+  },
+  http: {
+    /**
+     * @param {Object} req The request object
+     * @param {Function} callback The callback function. Has the following structure: callback(error, success, [subject])
+     */
+    authenticate: function(req, callback) {
+      // ...
+    },
+    /**
+     * @param {Object} subject The subject returned by the authenticate function
+     * @param {string} topic The topic
+     * @param {Function} callback The callback function. Has the following structure: callback(error, authorized)
+     */
+    authorizeGet: function(subject, topic, callback) {
+      // ...
+    },
+    /**
+     * @param {Object} subject The subject returned by the authenticate function
+     * @param {string} topic The topic
+     * @param {Buffer} payload The payload
+     * @param {Function} callback The callback function. Has the following structure: callback(error, authorized)
+     */
+    authorizePut: function(subject, topic, payload, callback) {
+      // ...
+    }
+  },
+  mqtt: {
+    /**
+     * @link https://github.com/mcollina/mosca/wiki/Authentication-&-Authorization
+     */
+    authenticate: function(client, username, password, callback) {
+      // ...
+    },
+    authorizePublish: function(client, topic, payload, callback) {
+      // ...
+    },
+    authorizeSubscribe: function(client, topic, callback) {
+      // ...
+    }
+  }
+}
+```
+
 Launch it with `$ ponte -c config.js`.
 
 ## Pub/Sub Brokers
