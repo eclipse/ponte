@@ -246,6 +246,7 @@ describe("Ponte as a CoAP API", function() {
 
       req.on('response', function(res) {
         expect(res.code).to.eql('4.01');
+        done();
       });
     });
     
@@ -257,6 +258,7 @@ describe("Ponte as a CoAP API", function() {
 
       req.on('response', function(res) {
         expect(res.code).to.eql('4.03');
+        done();
       });
     });
     
@@ -269,6 +271,7 @@ describe("Ponte as a CoAP API", function() {
 
       req.on('response', function(res) {
         expect(res.code).to.eql('4.03');
+        done();
       });
     });
   
