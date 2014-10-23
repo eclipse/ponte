@@ -252,7 +252,7 @@ module.exports = {
   coap: {
     /**
      * @param {Object} req The incoming message @link https://github.com/mcollina/node-coap#incoming
-     * @param {Function} callback The callback function. Has the following structure: callback(error, authenticated, [subject])
+     * @param {Function} callback The callback function. Has the following structure: callback(error, authenticated, subject)
      */
     authenticate: function(req, callback) {
       // Examples:
@@ -287,7 +287,7 @@ module.exports = {
   http: {
     /**
      * @param {Object} req The request object
-     * @param {Function} callback The callback function. Has the following structure: callback(error, success, [subject])
+     * @param {Function} callback The callback function. Has the following structure: callback(error, authenticated, subject)
      */
     authenticate: function(req, callback) {
       // See coap.authenticate
@@ -303,7 +303,7 @@ module.exports = {
     /**
      * @param {Object} subject The subject returned by the authenticate function
      * @param {string} topic The topic
-     * @param {Buffer} payload The payload
+     * @param {string} payload The payload
      * @param {Function} callback The callback function. Has the following structure: callback(error, authorized)
      */
     authorizePut: function(subject, topic, payload, callback) {
