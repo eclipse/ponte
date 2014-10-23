@@ -101,23 +101,24 @@ describe("Ponte as an MQTT server", function() {
       settings = ponteSettings();
       
       settings.mqtt.authenticate = function(client, username, password, callback) {
-        if(username === "authenticationError") {
+        if(username == "authenticationError") {
           callback(new Error("Authentication error"));
-        } else if(username === "notAuthorized") {
+        } else if(username == "notAuthorized") {
           callback(null, false);
         } else {
+          client.user = "user";
           callback(null, true);
         }
       };
       settings.mqtt.authorizePublish = function(client, topic, payload, callback) {
-        if(topic === "unauthorizedPublish") {
+        if(topic == "unauthorizedPublish") {
           callback(null, false);
         } else {
           callback(null, true);
         }
       };
       settings.mqtt.authorizeSubscribe = function(client, topic, callback) {
-        if(topic === "unauthorizedSubscribe") {
+        if(topic == "unauthorizedSubscribe") {
           callback(null, false);
         } else {
           callback(null, true);
@@ -164,47 +165,33 @@ describe("Ponte as an MQTT server", function() {
     });
     
     it("should close the connection if an unauthorized publish is attempted", function(done) {
-      var client = mqtt.createClient(settings.mqtt.port, "localhost", {
-        username: "unauthorizedPublish",
-        password: ""
-      });
+      var client = mqtt.createClient(settings.mqtt.port);
       var error;
       client.on("message", function() {
-        client.end();
         error = new Error("Expected connection close");
+        client.end();
       });
-      client.on("close", function() {
+      var closeListener = function() {
+        client.removeListener("close", closeListener);
         if(error) {
           done(error);
         } else {
           client.end();
           done();
         }
-      });
-      client.subscribe("/hello")
-        .publish("/hello", "world");
+      };
+      client.on("close", closeListener);
+      client.subscribe("unauthorizedPublish")
+        .publish("unauthorizedPublish", "world");
     });
     
-    it("should close the connection if an unauthorized subscribe is attempted", function(done) {
-      var client = mqtt.createClient(settings.mqtt.port, "localhost", {
-        username: "unauthorizedPublish",
-        password: ""
-      });
-      var error;
-      client.on("message", function() {
+    it("should denny the subscription when an unauthorized subscribe is attempted", function(done) {
+      var client = mqtt.createClient(settings.mqtt.port);
+      client.subscribe("unauthorizedSubscribe", function(err, subscribes) {
         client.end();
-        error = new Error("Expected connection close");
+        expect(subscribes[0].qos).to.eql(0x80);
+        done();
       });
-      client.on("close", function() {
-        if(error) {
-          done(error);
-        } else {
-          client.end();
-          done();
-        }
-      });
-      client.publish("/hello", "world", { retain: true })
-        .subscribe("/hello");
     });
   
   });
