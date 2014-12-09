@@ -1,6 +1,6 @@
 {
   "name": "ponte",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "The Internet of Things Bridge for REST developers",
   "main": "lib/ponte.js",
   "bin": {
@@ -48,8 +48,8 @@
     "mows": "0.0.6"
   },
   "dependencies": {
-    "mosca": "~0.24.0",
-    "ascoltatori": "~0.16.0",
+    "mosca": "~0.26.2",
+    "ascoltatori": "~0.18.0",
     "commander": "~2.3.0",
     "bunyan": "~1.0.1",
     "mqtt": "~0.3.11",
