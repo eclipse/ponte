@@ -37,27 +37,27 @@
     }
   ],
   "devDependencies": {
-    "tmp": "0.0.24",
-    "superagent": "~0.18.0",
-    "sinon": "~1.10.2",
-    "supertest": "~0.13.0",
-    "chai": "~1.9.1",
-    "mocha": "~1.21.0",
-    "pre-commit": "0.0.9",
-    "jshint": "~2.5.1",
+    "tmp": "0.0.25",
+    "superagent": "~1.2.0",
+    "sinon": "~1.14.1",
+    "supertest": "~0.15.0",
+    "chai": "~2.2.0",
+    "mocha": "~2.2.4",
+    "pre-commit": "1.0.6",
+    "jshint": "~2.7.0",
     "mows": "0.0.6"
   },
   "dependencies": {
-    "mosca": "~0.26.2",
-    "ascoltatori": "~0.18.0",
+    "mosca": "~0.29.0",
+    "ascoltatori": "~0.20.2",
     "commander": "~2.3.0",
-    "bunyan": "~1.0.1",
+    "bunyan": "~1.3.5",
     "mqtt": "~0.3.11",
     "async": "~0.9.0",
     "callback-stream": "~1.0.2",
     "xtend": "~4.0.0",
     "coap": "~0.8.0",
     "st": "~0.5.1",
-    "corsify": "~1.0.2"
+    "corsify": "~2.1.0"
   }
 }
