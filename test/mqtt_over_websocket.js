@@ -14,7 +14,7 @@
  *******************************************************************************/
 
 var request = require("supertest");
-var mqtt = require("mows");
+var mqtt = require("mqtt");
 var ponte = require("../lib/ponte");
 var fs = require("fs");
 
@@ -32,8 +32,12 @@ describe("Ponte as an MQTT-over-WebSocket server", function() {
     instance.close(done);
   });
 
+  function connect() {
+    return mqtt.connect('ws://localhost:' + settings.http.port);
+  }
+
   it("should allow a client to publish and subscribe", function(done) {
-    var client = mqtt.createClient(settings.http.port);
+    var client = connect();
     client
       .subscribe("/hello")
       .publish("/hello", "world")
@@ -41,13 +45,13 @@ describe("Ponte as an MQTT-over-WebSocket server", function() {
         client.end();
 
         expect(topic).to.eql("/hello");
-        expect(payload).to.eql("world");
+        expect(payload.toString()).to.eql("world");
         done();
       });
   });
 
   it("should expose retained messages to HTTP", function(done) {
-    var client = mqtt.createClient(settings.http.port);
+    var client = connect();
     client
       .publish("hello", "world", { retain: true, qos: 1 }, function() {
         client.end();
@@ -59,7 +63,7 @@ describe("Ponte as an MQTT-over-WebSocket server", function() {
   });
 
   it("should expose retained messages to HTTP (double slash)", function(done) {
-    var client = mqtt.createClient(settings.http.port);
+    var client = connect();
     client
       .publish("/hello", "world", { retain: true, qos: 1 }, function() {
         client.end();
@@ -72,7 +76,7 @@ describe("Ponte as an MQTT-over-WebSocket server", function() {
 
   it("should emit an 'updated' event after a publish", function(done) {
 
-    var client = mqtt.createClient(settings.http.port);
+    var client = connect();
     client.publish("/hello", "world",
                    { retain: true, qos: 1 },
                    function() {

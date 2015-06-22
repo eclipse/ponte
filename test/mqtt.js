@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * and Eclipse Distribution License v1.0 which accompany this distribution.
  *
- * The Eclipse Public License is available at 
+ * The Eclipse Public License is available at
  *    http://www.eclipse.org/legal/epl-v10.html
- * and the Eclipse Distribution License is available at 
+ * and the Eclipse Distribution License is available at
  *   http://www.eclipse.org/org/documents/edl-v10.php.
  *
  * Contributors:
@@ -33,32 +33,36 @@ describe("Ponte as an MQTT server", function() {
       instance.close(done);
     });
 
+    function connect() {
+      return mqtt.connect('mqtt://localhost:' + settings.mqtt.port);
+    }
+
     it("should allow a client to publish and subscribe", function(done) {
-      var client = mqtt.createClient(settings.mqtt.port);
+      var client = connect();
       client
         .subscribe("/hello")
         .publish("/hello", "world")
         .on("message", function(topic, payload) {
           expect(topic).to.eql("/hello");
-          expect(payload).to.eql("world");
+          expect(payload.toString()).to.eql("world");
           done();
         });
     });
 
     it("should support wildcards", function(done) {
-      var client = mqtt.createClient(settings.mqtt.port);
+      var client = connect();
       client
         .subscribe("#")
         .publish("hello", "world")
         .on("message", function(topic, payload) {
           expect(topic).to.eql("hello");
-          expect(payload).to.eql("world");
+          expect(payload.toString()).to.eql("world");
           done();
         });
     });
 
     it("should expose retained messages to HTTP", function(done) {
-      var client = mqtt.createClient(settings.mqtt.port);
+      var client = connect();
       client
         .publish("hello", "world", { retain: true, qos: 1 }, function() {
           request(instance.http.server)
@@ -68,7 +72,7 @@ describe("Ponte as an MQTT server", function() {
     });
 
     it("should expose retained messages to HTTP (double slash)", function(done) {
-      var client = mqtt.createClient(settings.mqtt.port);
+      var client = connect();
       client
         .publish("/hello", "world", { retain: true, qos: 1 }, function() {
           request(instance.http.server)
@@ -78,8 +82,7 @@ describe("Ponte as an MQTT server", function() {
     });
 
     it("should emit an 'updated' event after a publish", function(done) {
-
-      var client = mqtt.createClient(settings.mqtt.port);
+      var client = connect();
       client.publish("/hello", "world",
                      { retain: true, qos: 1 },
                      function() {
@@ -92,14 +95,14 @@ describe("Ponte as an MQTT server", function() {
         done();
       });
     });
-    
+
   });
-  
+
   describe("with auth problems", function() {
-  
+
     beforeEach(function(done) {
       settings = ponteSettings();
-      
+
       settings.mqtt.authenticate = function(client, username, password, callback) {
         if(username == "authenticationError") {
           callback(new Error("Authentication error"));
@@ -124,16 +127,16 @@ describe("Ponte as an MQTT server", function() {
           callback(null, true);
         }
       };
-      
+
       instance = ponte(settings, done);
     });
 
     afterEach(function(done) {
       instance.close(done);
     });
-    
+
     it("should throw a connection error if there is an authentication error", function(done){
-      var client = mqtt.createClient(settings.mqtt.port, "localhost", {
+      var client = mqtt.connect('mqtt://localhost:' + settings.mqtt.port, {
         username: "authenticationError",
         password: ""
       });
@@ -147,10 +150,10 @@ describe("Ponte as an MQTT server", function() {
         done();
       });
     });
-    
+
     it("should throw a connection error if the user is not authorized", function(done){
-      var client = mqtt.createClient(settings.mqtt.port, "localhost", {
-        username: "notAuthorized",
+      var client = mqtt.connect('mqtt://localhost:' + settings.mqtt.port, {
+        username: "authenticationError",
         password: ""
       });
       client.on("connect", function() {
@@ -159,13 +162,13 @@ describe("Ponte as an MQTT server", function() {
       });
       client.on("error", function(error) {
         client.end();
-        expect(error.message).to.eql("Connection refused: Not authorized");
+        expect(error.message).to.eql("Connection refused: Bad username or password");
         done();
       });
     });
-    
+
     it("should close the connection if an unauthorized publish is attempted", function(done) {
-      var client = mqtt.createClient(settings.mqtt.port);
+      var client = mqtt.connect('mqtt://localhost:' + settings.mqtt.port);
       var error;
       client.on("message", function() {
         error = new Error("Expected connection close");
@@ -184,16 +187,16 @@ describe("Ponte as an MQTT server", function() {
       client.subscribe("unauthorizedPublish")
         .publish("unauthorizedPublish", "world");
     });
-    
+
     it("should denny the subscription when an unauthorized subscribe is attempted", function(done) {
-      var client = mqtt.createClient(settings.mqtt.port);
+      var client = mqtt.connect('mqtt://localhost:' + settings.mqtt.port);
       client.subscribe("unauthorizedSubscribe", function(err, subscribes) {
         client.end();
         expect(subscribes[0].qos).to.eql(0x80);
         done();
       });
     });
-  
+
   });
-  
+
 });

@@ -130,7 +130,7 @@ describe("Ponte as a CoAP API", function() {
     });
 
     it("should publish a value to MQTT after PUT", function(done) {
-      mqtt.createClient(settings.mqtt.port)
+      mqtt.connect('mqtt://localhost:' + settings.mqtt.port)
           .subscribe("hello", function() {
             var req = coap.request({
               port: settings.coap.port,
@@ -141,7 +141,7 @@ describe("Ponte as a CoAP API", function() {
 
           .on("message", function(topic, payload) {
             expect(topic).to.eql("hello");
-            expect(payload).to.eql("world");
+            expect(payload.toString()).to.eql("world");
             done();
           });
     });
@@ -169,7 +169,7 @@ describe("Ponte as a CoAP API", function() {
         req2.end();
 
         req2.on('response', function(res) {
-          mqtt.createClient(settings.mqtt.port)
+          mqtt.connect('mqtt://localhost:' + settings.mqtt.port)
               .publish("hello", "world", { retain: true })
               .publish("hello", "matteo", { retain: true })
               .end();

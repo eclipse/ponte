@@ -26,16 +26,7 @@
     "url": "http://github.com/eclipse/ponte/issues"
   },
   "author": "Matteo Collina <hello@matteocollina.com>",
-  "license": [
-    {
-      "type": "Eclipse Distribution License 1.0 (EDL-1.0) (BSD 3-Clause)",
-      "url": "http://www.eclipse.org/org/documents/edl-v10.html"
-    },
-    {
-      "type": "Eclipse Public License 1.0 (EPL-1.0)",
-      "url": "http://www.eclipse.org/org/documents/epl-v10.html"
-    }
-  ],
+  "license": "EPL-1.0 OR BSD-3-Clause",
   "devDependencies": {
     "tmp": "0.0.25",
     "superagent": "~1.2.0",
@@ -44,19 +35,18 @@
     "chai": "~2.2.0",
     "mocha": "~2.2.4",
     "pre-commit": "1.0.6",
-    "jshint": "~2.7.0",
-    "mows": "0.0.6"
+    "jshint": "~2.7.0"
   },
   "dependencies": {
-    "mosca": "~0.29.0",
-    "ascoltatori": "~0.20.2",
+    "mosca": "~0.30.0",
+    "ascoltatori": "~0.21.0",
     "commander": "~2.3.0",
-    "bunyan": "~1.3.5",
-    "mqtt": "~0.3.11",
+    "bunyan": "~1.4.0",
+    "mqtt": "~1.3.1",
     "async": "~0.9.0",
     "callback-stream": "~1.0.2",
     "xtend": "~4.0.0",
-    "coap": "~0.8.0",
+    "coap": "~0.10.3",
     "st": "~0.5.1",
     "corsify": "~2.1.0"
   }
