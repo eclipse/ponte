@@ -17,6 +17,10 @@ happy to help you getting started and solve any issue you'll find out.
 A test instance of ponte is available at ponte.eclipse.org, on HTTP,
 MQTT and CoAP standard ports.
 
+Report bugs at the [Eclipse
+Bugzilla](https://bugs.eclipse.org/bugs/buglist.cgi?component=Core&product=Ponte&resolution=---)
+and join the [mailing list](https://dev.eclipse.org/mailman/listinfo/ponte-dev).
+
 ## Installation
 
 Ponte is a node.js application, so it needs [node.js](http://nodejs.org)
