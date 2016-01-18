@@ -21,6 +21,7 @@ var mosca = require("mosca");
 describe("ponte.cli", function() {
 
   var servers = null;
+  var args;
 
   beforeEach(function() {
     args = ["node", "ponte"];

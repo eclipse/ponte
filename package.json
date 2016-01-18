@@ -1,6 +1,6 @@
 {
   "name": "ponte",
-  "version": "0.0.15",
+  "version": "1.0.0",
   "description": "The Internet of Things Bridge for REST developers",
   "main": "lib/ponte.js",
   "bin": {
@@ -34,15 +34,15 @@
     "supertest": "~1.0.1",
     "chai": "~3.0.0",
     "mocha": "~2.2.4",
+    "mqtt": "~1.6.3",
     "pre-commit": "~1.0.10",
     "jshint": "~2.8.0"
   },
   "dependencies": {
-    "mosca": "~0.32.1",
-    "ascoltatori": "~0.21.1",
+    "mosca": "~1.0.0-pre1",
+    "ascoltatori": "~2.0.0-pre1",
     "commander": "~2.8.1",
     "bunyan": "~1.4.0",
-    "mqtt": "~1.5.0",
     "async": "~1.5.0",
     "callback-stream": "~1.0.2",
     "xtend": "~4.0.1",
