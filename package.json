@@ -1,6 +1,6 @@
 {
   "name": "ponte",
-  "version": "1.0.0",
+  "version": "0.0.14",
   "description": "The Internet of Things Bridge for REST developers",
   "main": "lib/ponte.js",
   "bin": {
@@ -39,14 +39,14 @@
     "jshint": "~2.8.0"
   },
   "dependencies": {
-    "mosca": "~1.0.0-pre1",
-    "ascoltatori": "~2.0.0-pre1",
+    "mosca": "~1.0.1",
+    "ascoltatori": "~2.0.1",
     "commander": "~2.8.1",
     "bunyan": "~1.4.0",
     "async": "~1.5.0",
     "callback-stream": "~1.0.2",
     "xtend": "~4.0.1",
-    "coap": "~0.12.1",
+    "coap": "~0.13.0",
     "st": "~1.0.0",
     "corsify": "~2.1.0"
   }
