@@ -14,7 +14,7 @@ If you plan to use Ponte in production
 [let us know](http://twitter.com/matteocollina), we'll be more than
 happy to help you getting started and solve any issue you'll find out.
 
-A test instance of ponte is available at ponte.eclipse.org, on HTTP,
+A test instance of ponte is available at [ponte.eclipse.org](ponte.eclipse.org), on HTTP,
 MQTT and CoAP standard ports.
 
 Report bugs at the [Eclipse
