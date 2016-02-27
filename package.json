@@ -39,7 +39,7 @@
     "jshint": "~2.9.1"
   },
   "dependencies": {
-    "mosca": "~1.0.1",
+    "mosca": "~1.1.2",
     "ascoltatori": "~2.0.1",
     "commander": "~2.9.0",
     "bunyan": "~1.5.1",
