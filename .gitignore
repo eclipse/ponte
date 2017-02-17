@@ -17,3 +17,6 @@ docs
 mosquitto.db
 *.pdf
 db/
+
+.project
+.settings
