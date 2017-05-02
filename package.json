@@ -9,13 +9,13 @@
   "scripts": {
     "test": "mocha --recursive --bail --reporter spec test",
     "ci": "mocha --recursive --bail --watch test",
-    "jshint-lib": "jshint lib",
-    "jshint-test": "jshint test",
+    "standard-lib": "standard lib/*.js --fix",
+    "standard-test": "standard test/*.js --fix",
     "start": "./bin/ponte -v | bunyan"
   },
   "pre-commit": [
-    "jshint-lib",
-    "jshint-test",
+    "standard-lib",
+    "standard-test",
     "test"
   ],
   "repository": {
@@ -26,28 +26,30 @@
     "url": "https://bugs.eclipse.org/bugs/buglist.cgi?component=Core&product=Ponte&resolution=---"
   },
   "author": "Matteo Collina <hello@matteocollina.com>",
+  "contributors": [
+    "Jovan Kostovski <chombium@gmail.com> (https://chombium.wordpress.com)"
+  ],
   "license": "EPL-1.0 OR BSD-3-Clause",
   "devDependencies": {
-    "tmp": "0.0.28",
-    "superagent": "~1.7.1",
-    "sinon": "~1.17.2",
-    "supertest": "~1.1.0",
-    "chai": "~3.4.1",
-    "mocha": "~2.3.4",
-    "mqtt": "~1.7.0",
-    "pre-commit": "~1.1.2",
-    "jshint": "~2.9.1"
+    "tmp": "0.0.31",
+    "superagent": "~3.3.1",
+    "sinon": "~1.17.7",
+    "supertest": "~2.0.1",
+    "chai": "~3.5.0",
+    "mocha": "~3.2.0",
+    "mqtt": "~2.2.1",
+    "pre-commit": "~1.2.2"
   },
   "dependencies": {
-    "mosca": "~1.1.2",
-    "ascoltatori": "~2.0.1",
+    "mosca": "~2.2.0",
+    "ascoltatori": "~3.2.0",
     "commander": "~2.9.0",
-    "bunyan": "~1.5.1",
-    "async": "~1.5.0",
+    "bunyan": "~1.8.5",
+    "async": "~2.1.4",
     "callback-stream": "~1.1.0",
     "xtend": "~4.0.1",
-    "coap": "~0.13.0",
-    "st": "~1.1.0",
+    "coap": "~0.19.0",
+    "st": "~1.2.0",
     "corsify": "~2.1.0"
   }
 }

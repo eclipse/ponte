@@ -21,6 +21,8 @@ Report bugs at the [Eclipse
 Bugzilla](https://bugs.eclipse.org/bugs/buglist.cgi?component=Core&product=Ponte&resolution=---)
 and join the [mailing list](https://dev.eclipse.org/mailman/listinfo/ponte-dev).
 
+[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 ## Installation
 
 Ponte is a node.js application, so it needs [node.js](http://nodejs.org)
@@ -389,6 +391,10 @@ http://eclipse.org/proposals/technology.ponte/
 
 ## Contributing to Ponte
 
+* Install [JavaScript Standard Style] (https://github.com/feross/standard)
+```bash
+$ npm i -g standard
+```
 * Check out the latest master to make sure the feature hasn't been
   implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't
