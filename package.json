@@ -11,7 +11,9 @@
     "ci": "mocha --recursive --bail --watch test",
     "standard-lib": "standard lib/*.js --fix",
     "standard-test": "standard test/*.js --fix",
-    "start": "./bin/ponte -v | bunyan"
+    "start": "./bin/ponte -v | bunyan",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "pre-commit": [
     "standard-lib",
@@ -50,6 +52,8 @@
     "xtend": "~4.0.1",
     "coap": "~0.19.0",
     "st": "~1.2.0",
-    "corsify": "~2.1.0"
-  }
+    "corsify": "~2.1.0",
+    "snyk": "^1.88.2"
+  },
+  "snyk": true
 }
