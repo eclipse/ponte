@@ -41,7 +41,7 @@
     "pre-commit": "~1.2.2"
   },
   "dependencies": {
-    "mosca": "~2.2.0",
+    "mosca": "~2.8.2",
     "ascoltatori": "~3.2.0",
     "commander": "~2.9.0",
     "bunyan": "~1.8.5",
